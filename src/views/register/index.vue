@@ -1,46 +1,156 @@
 <template>
-  <el-container>
-    <el-main>
-      <h2>用户密码</h2>
-      <el-form
-        label-width="auto"
-        style="max-width: 600px"
-        :model="form"
-        :rules="formRules"
-      >
-        <el-form-item label="用户名">
-          <el-input v-model="form.username" placeholder="请输入用户名" />
+  <div class="login-container">
+    <el-card class="card">
+      <h2 class="title">用户注册</h2>
+      <el-form label-width="auto" :model="form" :rules="formRules">
+        <el-form-item size="large">
+          <el-input
+              :prefix-icon="User"
+              v-model="form.email"
+              placeholder="请输入邮箱"
+          />
         </el-form-item>
-        <el-form-item label="密码">
-          <el-input v-model="form.password" placeholder="请输入密码" />
+        <el-form-item size="large">
+          <el-input
+              :prefix-icon="User"
+              v-model="form.username"
+              placeholder="请输入用户名"
+          />
         </el-form-item>
-        <el-form-item>
-          <el-button type="primary">登录</el-button>
+        <el-form-item size="large">
+          <el-input
+              :prefix-icon="Lock"
+              v-model="form.password"
+              placeholder="请输入密码"
+          />
+        </el-form-item>
+        <el-form-item size="large">
+          <el-input
+              :prefix-icon="Key"
+              v-model="form.code"
+              placeholder="请输入验证码"
+          >
+            <template #append>
+              <el-button>获取验证码</el-button>
+            </template>
+          </el-input>
+        </el-form-item>
+        <el-form-item size="large">
+          <el-button
+              type="primary"
+              class="full-width"
+              @click="login"
+          >
+            登录
+          </el-button>
+          <el-button type="primary" class="full-width" @click="register">
+            注册
+          </el-button>
+        </el-form-item>
+        <el-form-item size="large">
+          注册即同意
+          <a href="" @click.prevent="userProtocol">《用户服务协议》</a>
         </el-form-item>
       </el-form>
-    </el-main>
-  </el-container>
+    </el-card>
+  </div>
 </template>
-  
-  <script setup lang="ts">
-import { ref, reactive } from "vue";
 
-const username = ref("");
-const password = ref("");
+<script setup>
+import {ref, reactive, watch, computed, defineProps} from "vue";
+import {ElMessage} from "element-plus";
+import {User, Lock, Key} from "@element-plus/icons-vue";
+import {useRoute, useRouter} from 'vue-router';
+
+const route = useRoute();
+const router = useRouter();
+
+const userProtocol = () => {
+  ElMessage("用户协议");
+};
+
+const props = defineProps({
+  show: Boolean
+});
+
+const dialogShow = ref(props.show);
+watch(
+    () => props.show,
+    (newValue) => {
+      dialogShow.value = newValue;
+    }
+);
+
+const isLogin = ref(true);
+
+const handleLogin = () => {
+  isLogin.value = true;
+};
+
+const handleRegister = () => {
+  isLogin.value = false;
+};
+
+const login = () => {
+  router.push({
+    name: "login",
+  })
+};
+
 const form = reactive({
   username: "",
   password: "",
+  code: "",
 });
 
 const formRules = {
-  username: [{ required: true, message: "请输入用户名" }],
-  password: [{ required: true, message: "请输入密码" }],
+  username: [{required: true, message: "请输入用户名", trigger: "blur"}],
+  password: [{required: true, message: "请输入密码", trigger: "blur"}],
+  code: [{required: true, message: "请输入验证码", trigger: "blur"}],
 };
+
+const register = () => {
+  console.log(router)
+  router.push({
+    name: 'register',
+    query: {},
+  });
+};
+
+// TabBar
+const userLoginActiveName = ref("login");
+const handleUserLoginTabClick = (tab, event) => {
+  console.log(tab, event);
+};
+
 </script>
-  
-  <style scoped>
-.el-main {
-  margin-top: 50px;
+
+<style scoped lang="scss">
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //background-image: url("@/assets/images/微信名片.JPG");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 100vh;
+  background-color: red;
+
+  .title {
+    margin-bottom: 10px;
+  }
+
+  .el-card {
+    width: 500px;
+
+    .el-card__body {
+
+      button {
+      }
+    }
+  }
+
+
 }
 </style>
-  

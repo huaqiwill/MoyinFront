@@ -1,13 +1,13 @@
 <template>
-    <el-container>
-        <el-main>
-            <el-empty>
-                about
-            </el-empty>
-        </el-main>
-    </el-container>
+  <el-container>
+    <el-main>
+      <el-empty> 联系我们 </el-empty>
+    </el-main>
+  </el-container>
 </template>
-<script setup>
+<script setup lang="ts">
 
 </script>
-<style scoped></style>
+<style  lang="scss" scoped>
+
+</style>

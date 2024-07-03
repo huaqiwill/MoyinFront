@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
-import { generateDub } from '../api/api'
 
-export const useStore = defineStore('store', {
+export const useUserStore = defineStore('user', {
     state: () => {
         return {
             isPlaying: false,
@@ -23,9 +22,8 @@ export const useStore = defineStore('store', {
 
     },
     actions: {
-        GENERATEDUB() {
-            const dubResult = generateDub()
-            console.log('GENERATEDUB', dubResult)
+        async login(){
+            
         }
     }
 })
