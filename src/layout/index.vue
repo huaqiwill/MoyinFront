@@ -10,8 +10,8 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import {Header, Footer} from "./components";
+<script setup>
+import { Header, Footer } from "./components";
 </script>
 
 <style scoped lang="scss">

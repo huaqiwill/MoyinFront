@@ -1,5 +1,6 @@
 import request from "@/utils/request";
 
+// 分类列表
 export function moyinCategoryList(){
     return request({
         url: '/moyin/category/list',
@@ -10,6 +11,7 @@ export function moyinCategoryList(){
     })
 }
 
+// 情绪列表
 export function moyinEmotionList(){
     return request({
         url: '/moyin/emotion/list',
@@ -20,6 +22,7 @@ export function moyinEmotionList(){
     })
 }
 
+// 配音员列表
 export function moyinDubbingList() {
     return request({
         url: '/moyin/dubbing/list',
@@ -30,6 +33,7 @@ export function moyinDubbingList() {
     })
 }
 
+// 会员信息
 export function moyinMemberInfo() {
     return request({
         url: '/moyin/member/info',
@@ -40,12 +44,4 @@ export function moyinMemberInfo() {
     })
 }
 
-export function generateDub(){
-    return request({
-        url: '/moyin/dubbing/list',
-        method: 'POST',
-        data: {
-            text: 'hello world'
-        }
-    });
-}
+

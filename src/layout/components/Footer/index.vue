@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { ref } from "vue";
 const title = ref("魔音配音工具");
 const record = ref("鄂ICP备2021001460号-2");

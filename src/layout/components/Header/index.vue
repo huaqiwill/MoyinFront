@@ -3,11 +3,11 @@
     <div class="menu-container">
       <Logo></Logo>
       <el-menu
-          :default-active="0"
-          class="menu-list"
-          mode="horizontal"
-          :ellipsis="false"
-          @select="handleSelect"
+        :default-active="0"
+        class="menu-list"
+        mode="horizontal"
+        :ellipsis="false"
+        @select="handleSelect"
       >
         <el-menu-item :index="0">
           <router-link to="/dubbing" :key="0">开始配音</router-link>
@@ -18,10 +18,10 @@
         <el-menu-item class="contact-item" :index="2">
           联系我们
           <div class="contact-image">
-            <img src="../../../assets/images/微信名片.JPG" alt="微信名片"/>
+            <img src="../../../assets/images/微信名片.JPG" alt="微信名片" />
           </div>
         </el-menu-item>
-        <div class="flex-grow"/>
+        <div class="flex-grow" />
       </el-menu>
     </div>
     <div class="login-container">
@@ -34,8 +34,8 @@
 
       <el-dropdown style="margin-top: 25px" v-else>
         <el-avatar
-            :size="50"
-            src="'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'"
+          :size="50"
+          src="'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'"
         />
         <template #dropdown>
           <el-dropdown-menu>
@@ -49,11 +49,9 @@
 </template>
 
 <script setup>
-import {ref} from "vue";
+import { ref } from "vue";
 import Logo from "./Logo.vue";
 import LoginOrRegister from "./LoginOrRegister.vue";
-
-
 
 // 是否为登录状态
 const isLogin = ref(true);

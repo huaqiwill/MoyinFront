@@ -6,3 +6,8 @@ export function name(params) {
 
 }
 
+export function getWords(){
+
+}
+
+

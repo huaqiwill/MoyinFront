@@ -11,6 +11,16 @@
       @click="handleInsertPause"
     ></DubbingButton>
     <DubbingButton
+      title="下载视频"
+      content="从光标处开始试听"
+      @click="handleInsertPause"
+    ></DubbingButton>
+    <DubbingButton
+      title="下载字幕"
+      content="从光标处开始试听"
+      @click="handleInsertPause"
+    ></DubbingButton>
+    <DubbingButton
       title="生成记录"
       content="从光标处开始试听"
       @click="handleInsertPause"
@@ -22,11 +32,6 @@
     ></DubbingButton>
     <DubbingButton
       title="配音配置"
-      content="从光标处开始试听"
-      @click="handleInsertPause"
-    ></DubbingButton>
-    <DubbingButton
-      title="清空文本"
       content="从光标处开始试听"
       @click="handleInsertPause"
     ></DubbingButton>

@@ -1,6 +1,6 @@
 <template>
   <svg aria-hidden="true" class="icon">
-    <use :href="symbolId" :fill="color"/>
+    <use :href="symbolId" :fill="color" />
   </svg>
 </template>
 
@@ -11,28 +11,23 @@
 }
 </style>
 
-<script lang="ts">
-import {defineComponent, computed} from 'vue'
+<script setup>
+import { computed, defineProps } from "vue";
 
-export default defineComponent({
-  name: 'SvgIcon',
-  props: {
-    prefix: {
-      type: String,
-      default: 'icon',
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    color: {
-      type: String,
-      default: '#333',
-    },
+const props = defineProps({
+  prefix: {
+    type: String,
+    default: "icon",
   },
-  setup(props) {
-    const symbolId = computed(() => `#${props.prefix}-${props.name}`)
-    return {symbolId}
+  name: {
+    type: String,
+    required: true,
   },
-})
+  color: {
+    type: String,
+    default: "#333",
+  },
+});
+
+const symbolId = computed(() => `#${props.prefix}-${props.name}`);
 </script>

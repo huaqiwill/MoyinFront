@@ -2,35 +2,27 @@
   <div class="dubbing-footer">
     <div class="footer-item">
       <div class="title">语速：</div>
-      <el-select
-        size="mini"
-        v-model="pace"
-        placeholder="Select"
-        style="width: 240px"
-      >
-        <el-option
-          v-for="item in paceOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        />
-      </el-select>
+      <el-slider
+        style="width: 600px"
+        v-model="value"
+        range
+        :marks="marks"
+        :min="0"
+        :max="2"
+        :step="0.1"
+      />
     </div>
     <div class="footer-item">
       <div class="title">语调：</div>
-      <el-select
-        size="mini"
-        v-model="intonation"
-        placeholder="Select"
-        style="width: 240px"
-      >
-        <el-option
-          v-for="item in intonationOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        />
-      </el-select>
+      <el-slider
+        style="width: 600px"
+        v-model="value"
+        range
+        :marks="marks"
+        :min="0"
+        :max="2"
+        :step="0.1"
+      />
     </div>
     <div class="footer-item">
       <div class="title">输出格式：</div>
@@ -48,13 +40,46 @@
         />
       </el-select>
     </div>
-    
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { Edit } from "@element-plus/icons-vue";
+
+import { reactive, ref } from "vue";
+import type { CSSProperties } from "vue";
+
+interface Mark {
+  style: CSSProperties;
+  label: string;
+}
+
+type Marks = Record<number, Mark | string>;
+
+const value = ref([0, 2]);
+const marks = reactive<Marks>({
+  0: "0",
+  0.1: "0.1",
+  0.2: "0.2",
+  0.3: "0.2",
+  0.4: "0.4",
+  0.5: "0.5",
+  0.6: "0.6",
+  0.7: "0.7",
+  0.8: "0.8",
+  0.9: "0.9",
+  1.0: "1.0",
+  1.1: "1.1",
+  1.2: "1.2",
+  1.3: "1.3",
+  1.4: "1.4",
+  1.5: "1.5",
+  1.6: "1.6",
+  1.7: "1.7",
+  1.8: "1.8",
+  1.9: "1.9",
+  2.0: "2.0",
+});
 
 // 语速
 const pace = ref(1);
@@ -103,8 +128,6 @@ const dialogDubConfig = ref(false);
 .dubbing-footer {
   background-color: #f4f6f7;
   border-radius: 5px;
-  display: flex;
-  align-items: center;
   padding: 0 15px;
   gap: 10px;
 
