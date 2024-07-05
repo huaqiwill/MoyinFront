@@ -1,4 +1,4 @@
-import {defineStore} from 'pinia'
+import { defineStore } from 'pinia'
 
 export const useDubbingStore = defineStore('dubbing', {
     state: () => {
@@ -6,7 +6,9 @@ export const useDubbingStore = defineStore('dubbing', {
             // 配音文字
             dubbingText: "",
             // 选中的配音文字
-            selectedDubbingText: "",
+            dubbingSelectedText: "",
+            // 编辑器实例
+            editorRef: null,
         }
     },
     getters: {

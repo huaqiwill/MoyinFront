@@ -1,21 +1,27 @@
 <template>
-  <DubbingList></DubbingList>
-  <DubbingEdit></DubbingEdit>
+  <div class="dubbing">
+    <DubbingList />
+    <DubbingEditor />
+  </div>
 </template>
 
-<script setup lang="ts">
-import { DubbingEdit, DubbingList } from "./components";
+<script setup>
+import { DubbingEditor, DubbingList } from "@/components";
 </script>
 
 <style scoped lang="scss">
-.dubbing-list {
-  border: 1px solid #e6e8e8;
-  width: 320px !important;
-}
-
-.dubbing-edit {
-  border: 1px solid #e6e8e8;
-  margin-left: 4px;
+.dubbing {
+  height: 100%;
   width: 100%;
+  display: flex;
+
+  .dubbing-list {
+    width: 40%;
+  }
+
+  .dubbing-editor {
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>

@@ -31,7 +31,7 @@ service.interceptors.request.use(
         if (getToken() && !isToken) {
             config.headers["Authorization"] = "Bearer " + getToken(); // 让每个请求携带自定义token 请根据实际情况自行修改
         }
-        config.headers["Authorization"] = "Bearer " + "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6Ijc3NGRjMWYyLTE1NzMtNDgwMy04MGFjLThiZDAyMDY5NDY4ZiJ9.OljC7up9Ib5n6RD1e_8uowQ42_s4K5W88RFq4eH93TGsbE9kkw9viyVsMf2sfKIo_QdUXHLqMSA2yCbE-A783w";
+        config.headers["Authorization"] = "Bearer " + "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjQ5NTJlN2FjLWNlYWUtNDZiMi1iMjcyLWY2ZDhmYzIwZjU2OSJ9.FPZurnAwj8s0VqKwXdFV0P7x6s9H7o6hoiNIe1QJ_NbS_EymM3KvhGvoshVwJUfq43x_nsFlF0IRuAkvmfUqQA";
         // get请求映射params参数
         if (config.method === "get" && config.params) {
             let url = config.url + "?" + tansParams(config.params);

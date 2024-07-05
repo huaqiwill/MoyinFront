@@ -1,16 +1,21 @@
 <template>
   <div class="tool-container">
+    <div v-if="hasContent" class="tool-item" @click="handleAudition">
+      <SvgIcon :name="icon"></SvgIcon>
+      <div class="name">{{ title }}</div>
+    </div>
     <el-popover
+      v-else
       placement="bottom-start"
       trigger="hover"
       :content="content"
       effect="light"
     >
       <template #reference>
-        <li class="tool-item" @click="handleAudition">
+        <div class="tool-item" @click="handleAudition">
           <SvgIcon :name="icon"></SvgIcon>
           <div class="name">{{ title }}</div>
-        </li>
+        </div>
       </template>
     </el-popover>
   </div>
@@ -18,9 +23,9 @@
 
 <script setup>
 import { SvgIcon } from "@/components";
-import { defineProps } from "vue";
+import { defineProps, computed } from "vue";
 
-defineProps({
+const props = defineProps({
   title: {
     type: String, // 参数类型
     default: "按钮", //默认值
@@ -28,8 +33,7 @@ defineProps({
   },
   content: {
     type: String, // 参数类型
-    default: "按钮", //默认值
-    required: true, //是否必传
+    default: undefined,
   },
   icon: {
     type: String, // 参数类型
@@ -37,6 +41,8 @@ defineProps({
     required: true, //是否必传
   },
 });
+
+const hasContent = computed(() => props.content === undefined || props.content === null);
 
 const emit = defineEmits(["click"]);
 
