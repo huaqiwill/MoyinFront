@@ -19,7 +19,6 @@ const { editorRef } = storeToRefs(dubbingStore);
 
 // 试听
 const handleTryListening = () => {
-  console.log(editorRef.value.getHtml());
   ElMessage({
     message: editorRef.value.getHtml(),
     type: "warning",

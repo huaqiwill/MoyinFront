@@ -3,7 +3,7 @@
   <el-popover
     placement="bottom"
     trigger="click"
-    popper-style="width:auto;"
+    :popper-style="popperStyle"
     :show-arrow="false"
   >
     <template #reference>
@@ -11,13 +11,14 @@
         title="停顿调节"
         content="停顿调节"
         icon="pause"
+        @click="handleClicked"
       />
     </template>
     <el-button-group>
-      <el-button type="primary">无停顿</el-button>
-      <el-button type="primary">短</el-button>
-      <el-button type="primary">中</el-button>
-      <el-button type="primary">长</el-button>
+      <el-button type="primary" @click="handlePause(0)">无停顿</el-button>
+      <el-button type="primary" @click="handlePause(100)">短</el-button>
+      <el-button type="primary" @click="handlePause(200)">中</el-button>
+      <el-button type="primary" @click="handlePause(500)">长</el-button>
     </el-button-group>
   </el-popover>
 </template>
@@ -25,6 +26,21 @@
 <script setup>
 import { ref } from "vue";
 import { DubbingDialog, DubbingButton } from "@/components";
+import { useDubbingStore } from "@/store";
+import { storeToRefs } from "pinia";
+
+const { editorRef } = storeToRefs(useDubbingStore());
+
+const popperStyle = ref("width:auto;");
+
+const handleClicked = () => {
+  const rect = editorRef.value.getCursorPosition();
+  popperStyle.value = `width:auto;left:${rect.left - 16}px;top:${rect.top + 22}px`;
+};
+
+const handlePause = (value) => {
+  editorRef.value.insertElement(value);
+};
 
 const customValue = ref("");
 

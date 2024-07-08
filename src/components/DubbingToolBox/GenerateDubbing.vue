@@ -12,10 +12,15 @@
 import { ref } from "vue";
 import { DubbingDialog, DubbingButton } from "@/components";
 import { ElMessage } from "element-plus";
+import { useDubbingStore } from "@/store";
+import { storeToRefs } from "pinia";
+
+const { editorRef } = storeToRefs(useDubbingStore());
 
 const handleClicked = () => {
+  let html = editorRef.value.getHtml();
   ElMessage({
-    message: "生成配音",
+    message: html,
   });
 };
 </script>

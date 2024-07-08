@@ -32,7 +32,7 @@
       <!-- 插入停顿 -->
       <li><InsertMute /></li>
       <!-- 符号停顿 -->
-      <li><SymbolicPause /></li>
+      <li><SymbolMute /></li>
       <!-- 段落停顿 -->
       <li><ParagraphMute /></li>
       <!-- 解说模式 -->
@@ -66,7 +66,7 @@ import {
   TryListening,
   PauseAdjust,
   InsertMute,
-  SymbolicPause,
+  SymbolMute,
   NarrateMode,
   ParagraphMute,
   Volume,

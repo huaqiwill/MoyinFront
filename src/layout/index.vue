@@ -2,9 +2,11 @@
   <div class="common-layout">
     <Header></Header>
     <div class="content">
-      <transition name="fade-transform" mode="out-in">
-        <router-view></router-view>
-      </transition>
+      <router-view v-slot="{ Component }">
+        <transition name="fade">
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </div>
     <Footer></Footer>
   </div>

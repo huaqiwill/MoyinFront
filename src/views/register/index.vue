@@ -1,35 +1,27 @@
 <template>
   <div class="login-container">
-    <el-card class="card">
+    <el-card>
       <h2 class="title">用户注册</h2>
       <el-form label-width="auto" :model="form" :rules="formRules">
         <el-form-item size="large">
+          <el-input :prefix-icon="User" v-model="form.email" placeholder="请输入邮箱" />
+        </el-form-item>
+        <el-form-item size="large">
           <el-input
-              :prefix-icon="User"
-              v-model="form.email"
-              placeholder="请输入邮箱"
+            :prefix-icon="User"
+            v-model="form.username"
+            placeholder="请输入用户名"
           />
         </el-form-item>
         <el-form-item size="large">
           <el-input
-              :prefix-icon="User"
-              v-model="form.username"
-              placeholder="请输入用户名"
+            :prefix-icon="Lock"
+            v-model="form.password"
+            placeholder="请输入密码"
           />
         </el-form-item>
         <el-form-item size="large">
-          <el-input
-              :prefix-icon="Lock"
-              v-model="form.password"
-              placeholder="请输入密码"
-          />
-        </el-form-item>
-        <el-form-item size="large">
-          <el-input
-              :prefix-icon="Key"
-              v-model="form.code"
-              placeholder="请输入验证码"
-          >
+          <el-input :prefix-icon="Key" v-model="form.code" placeholder="请输入验证码">
             <template #append>
               <el-button>获取验证码</el-button>
             </template>
@@ -37,19 +29,21 @@
         </el-form-item>
         <el-form-item size="large">
           <el-button
-              type="primary"
-              class="full-width"
-              @click="login"
+            type="primary"
+            class="full-width"
+            @click="register"
+            style="width: 100%"
           >
-            登录
-          </el-button>
-          <el-button type="primary" class="full-width" @click="register">
             注册
           </el-button>
         </el-form-item>
         <el-form-item size="large">
-          注册即同意
-          <a href="" @click.prevent="userProtocol">《用户服务协议》</a>
+          <div class="login-footer">
+            <div>没有账号？<a href="" @click.prevent="login">立即登录</a></div>
+            <div>
+              注册即同意 <a href="" @click.prevent="userProtocol">《用户服务协议》 </a>
+            </div>
+          </div>
         </el-form-item>
       </el-form>
     </el-card>
@@ -57,10 +51,10 @@
 </template>
 
 <script setup>
-import {ref, reactive, watch, computed, defineProps} from "vue";
-import {ElMessage} from "element-plus";
-import {User, Lock, Key} from "@element-plus/icons-vue";
-import {useRoute, useRouter} from 'vue-router';
+import { ref, reactive, watch, computed, defineProps } from "vue";
+import { ElMessage } from "element-plus";
+import { User, Lock, Key } from "@element-plus/icons-vue";
+import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
 const router = useRouter();
@@ -70,15 +64,15 @@ const userProtocol = () => {
 };
 
 const props = defineProps({
-  show: Boolean
+  show: Boolean,
 });
 
 const dialogShow = ref(props.show);
 watch(
-    () => props.show,
-    (newValue) => {
-      dialogShow.value = newValue;
-    }
+  () => props.show,
+  (newValue) => {
+    dialogShow.value = newValue;
+  }
 );
 
 const isLogin = ref(true);
@@ -94,7 +88,7 @@ const handleRegister = () => {
 const login = () => {
   router.push({
     name: "login",
-  })
+  });
 };
 
 const form = reactive({
@@ -104,15 +98,15 @@ const form = reactive({
 });
 
 const formRules = {
-  username: [{required: true, message: "请输入用户名", trigger: "blur"}],
-  password: [{required: true, message: "请输入密码", trigger: "blur"}],
-  code: [{required: true, message: "请输入验证码", trigger: "blur"}],
+  username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
+  password: [{ required: true, message: "请输入密码", trigger: "blur" }],
+  code: [{ required: true, message: "请输入验证码", trigger: "blur" }],
 };
 
 const register = () => {
-  console.log(router)
+  console.log(router);
   router.push({
-    name: 'register',
+    name: "register",
     query: {},
   });
 };
@@ -122,7 +116,6 @@ const userLoginActiveName = ref("login");
 const handleUserLoginTabClick = (tab, event) => {
   console.log(tab, event);
 };
-
 </script>
 
 <style scoped lang="scss">
@@ -130,27 +123,24 @@ const handleUserLoginTabClick = (tab, event) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  //background-image: url("@/assets/images/微信名片.JPG");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   width: 100%;
   height: 100vh;
-  background-color: red;
+  background-color: #eee;
 
   .title {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+  }
+
+  .login-footer {
+    display: flex;
+    justify-content: space-between;
+    div:nth-child(1) {
+      margin-right: 120px;
+    }
   }
 
   .el-card {
     width: 500px;
-
-    .el-card__body {
-
-      button {
-      }
-    }
   }
-
-
 }
 </style>

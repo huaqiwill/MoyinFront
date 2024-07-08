@@ -1,18 +1,12 @@
 <template>
-  <!-- 重音 -->
-  <el-popover
-    placement="bottom"
-    trigger="click"
-    popper-style="width:auto;"
-    :show-arrow="false"
-  >
-    <template #reference>
-      <DubbingButton
-        title="多人配音"
-        icon="d"
-        content="从光标处开始试听"
-      ></DubbingButton>
-    </template>
+  <!-- 多人配音 -->
+  <DubbingButton
+    title="多人配音"
+    icon="d"
+    content="从光标处开始试听"
+    @click="handleClicked"
+  />
+  <el-dialog v-model="dialogShow" title="多人配音">
     <div class="stress">
       <ul>
         <li>重读</li>
@@ -20,13 +14,17 @@
         <li>重读+拖音</li>
       </ul>
     </div>
-  </el-popover>
+  </el-dialog>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import { DubbingDialog, DubbingButton } from "@/components";
 
+const handleClicked = () => {
+  dialogShow.value = true;
+};
+const dialogShow = ref(false);
 </script>
 
 <style lang="scss" scoped>

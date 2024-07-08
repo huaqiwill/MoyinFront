@@ -9,42 +9,46 @@
     />
     <!-- 标签 -->
     <ul class="search-tag">
+      <div class="label">标签</div>
       <li
         :class="currentTag === item ? 'selected' : ''"
         v-for="item in tagList"
         @click="handleTagClicked(item)"
       >
-        {{ item }}
+        <span>{{ item }}</span>
       </li>
     </ul>
     <!-- 性别 -->
     <ul class="search-gender">
+      <div class="label">性别</div>
       <li
         :class="currentGender === item ? 'selected' : ''"
         v-for="item in genderList"
         @click="handleGenderClicked(item)"
       >
-        {{ item }}
+        <span>{{ item }}</span>
       </li>
     </ul>
     <!-- 分类 -->
     <ul class="search-category">
+      <div class="label">分类</div>
       <li
         :class="currentCategory === item ? 'selected' : ''"
         v-for="item in categoryList"
         @click="handleCategoryClicked(item)"
       >
-        {{ item }}
+        <span>{{ item }}</span>
       </li>
     </ul>
     <!-- 语言 -->
     <ul class="search-language">
+      <div class="label">语言</div>
       <li
         :class="currentLanguage === item ? 'selected' : ''"
         v-for="item in languageList"
         @click="handleLanguageClicked(item)"
       >
-        {{ item }}
+        <span>{{ item }}</span>
       </li>
     </ul>
     <!-- 配音员 -->
@@ -74,7 +78,16 @@ import { ElLoading } from "element-plus";
 
 const tagList = ref(["热榜", "至臻", "SVIP", "付费"]);
 const genderList = ref(["全部", "男声", "女声"]);
-const categoryList = ref(["全部", "影视", "情感", "助理"]);
+const categoryList = ref([
+  "全部大哥",
+  "影视大哥",
+  "情感大哥",
+  "助理大哥",
+  "全部大小",
+  "影视2",
+  "情感2",
+  "助理2",
+]);
 const languageList = ref(["全部", "英文", "德语"]);
 const speakerList = ref([
   {
@@ -132,7 +145,7 @@ const handleGenderClicked = (value) => {
   currentGender.value = value;
 };
 
-const currentCategory = ref("热门");
+const currentCategory = ref("全部");
 const handleCategoryClicked = (value) => {
   currentCategory.value = value;
 };
@@ -146,6 +159,9 @@ const currentSpeaker = ref("全部");
 const handleSpeakerClicked = (speaker) => {
   currentSpeaker.value = speaker.id;
 };
+
+const searchContent = ref("");
+
 </script>
 
 <style scoped lang="scss">
@@ -153,13 +169,13 @@ const handleSpeakerClicked = (speaker) => {
   height: 100%;
   background-color: #333;
   padding: 15px;
-  border-radius: 6px;
+  // border-radius: 6px;
 
   ::v-deep .el-input {
     margin-bottom: 15px;
     .el-input__wrapper {
       background-color: #4e76b4 !important;
-      border-radius: 16px !important;
+      // border-radius: 16px !important;
       input {
         caret-color: white;
       }
@@ -171,19 +187,25 @@ const handleSpeakerClicked = (speaker) => {
     gap: 16px;
     margin-bottom: 15px;
     flex-wrap: wrap;
+    .label {
+      font-size: 12px;
+      color: #fff;
+    }
     li {
       flex: 0 0 calc(100% / 6); /* 每个元素占1/7的宽度 */
-      border-radius: 11px;
+      border-radius: 2px;
       font-size: 12px;
       cursor: pointer;
       color: hsla(0, 0%, 100%, 0.6);
       font-family: "微软雅黑";
-      padding: 3px 8px;
-      border: 1px solid transparent;
-      &.selected {
+      &.selected span {
         color: #fff;
         background: hsla(0, 0%, 100%, 0.2);
         border: 1px solid #fff;
+      }
+      span {
+        padding: 3px 8px;
+        border: 1px solid transparent;
       }
     }
   }
@@ -193,20 +215,25 @@ const handleSpeakerClicked = (speaker) => {
     gap: 16px;
     margin-bottom: 15px;
     flex-wrap: wrap;
+    .label {
+      font-size: 12px;
+      color: #fff;
+    }
     li {
       flex: 0 0 calc(100% / 6); /* 每个元素占1/7的宽度 */
-      border-radius: 11px;
+      border-radius: 2px;
       font-size: 12px;
       cursor: pointer;
       color: hsla(0, 0%, 100%, 0.6);
       font-family: "微软雅黑";
-      padding: 3px 8px;
-      border: 1px solid transparent;
-      &.selected {
+      &.selected span {
         color: #fff;
         background: hsla(0, 0%, 100%, 0.2);
-        border-radius: 11px;
         border: 1px solid #fff;
+      }
+      span {
+        padding: 3px 8px;
+        border: 1px solid transparent;
       }
     }
   }
@@ -216,20 +243,25 @@ const handleSpeakerClicked = (speaker) => {
     gap: 16px;
     margin-bottom: 15px;
     flex-wrap: wrap;
+    .label {
+      font-size: 12px;
+      color: #fff;
+    }
     li {
       flex: 0 0 calc(100% / 6); /* 每个元素占1/7的宽度 */
-      border-radius: 11px;
+      border-radius: 2px;
       font-size: 12px;
       cursor: pointer;
       color: hsla(0, 0%, 100%, 0.6);
       font-family: "微软雅黑";
-      padding: 3px 8px;
-      border: 1px solid transparent;
-      &.selected {
+      &.selected span {
         color: #fff;
         background: hsla(0, 0%, 100%, 0.2);
-        border-radius: 11px;
         border: 1px solid #fff;
+      }
+      span {
+        padding: 3px 8px;
+        border: 1px solid transparent;
       }
     }
   }
@@ -237,22 +269,27 @@ const handleSpeakerClicked = (speaker) => {
   .search-language {
     display: flex;
     gap: 16px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     flex-wrap: wrap;
+    .label {
+      font-size: 12px;
+      color: #fff;
+    }
     li {
       flex: 0 0 calc(100% / 6); /* 每个元素占1/7的宽度 */
-      border-radius: 11px;
+      border-radius: 2px;
       font-size: 12px;
       cursor: pointer;
       color: hsla(0, 0%, 100%, 0.6);
       font-family: "微软雅黑";
-      padding: 3px 8px;
-      border: 1px solid transparent;
-      &.selected {
+      &.selected span {
         color: #fff;
         background: hsla(0, 0%, 100%, 0.2);
-        border-radius: 11px;
         border: 1px solid #fff;
+      }
+      span {
+        padding: 3px 8px;
+        border: 1px solid transparent;
       }
     }
   }

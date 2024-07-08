@@ -1,5 +1,5 @@
 <template>
-  <!-- 重音 -->
+  <!-- 查敏感词 -->
   <el-popover
     placement="bottom"
     trigger="click"
@@ -7,7 +7,7 @@
     :show-arrow="false"
   >
     <template #reference>
-      <DubbingButton title="查敏感词" content="从光标处开始试听"></DubbingButton>
+      <DubbingButton title="查敏感词" content="从光标处开始试听" icon="SensitiveWords"></DubbingButton>
     </template>
     <div class="stress">
       <ul>

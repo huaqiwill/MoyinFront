@@ -16,7 +16,7 @@ import { DubbingEditor, DubbingList } from "@/components";
   display: flex;
 
   .dubbing-list {
-    width: 40%;
+    width: 580px;
   }
 
   .dubbing-editor {

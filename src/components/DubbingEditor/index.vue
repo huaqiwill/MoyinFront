@@ -1,13 +1,13 @@
 <template>
   <div class="dubbing-editor">
-    <DubbingHeader />
+    <DubbingHeader @mousedown.prevent="customButtonClick" />
     <div class="dubbing-content">
       <Editor
         class="editor"
         style="height: 500px; overflow-y: hidden"
         v-model="valueHtml"
+        ref="editorRef"
         :defaultConfig="editorConfig"
-        :mode="mode"
         @onCreated="handleCreated"
       />
       <DubbingSidebar />
@@ -19,21 +19,19 @@
 import "@wangeditor/editor/dist/css/style.css"; // 引入 css
 
 import { onBeforeUnmount, ref, shallowRef, onMounted } from "vue";
-import { Editor, Toolbar } from "@wangeditor/editor-for-vue";
-import { DubbingHeader, DubbingSidebar, DubbingFooter } from "@/components";
+// import { Editor, Toolbar } from "@wangeditor/editor-for-vue";
+import { DubbingHeader, DubbingSidebar, DubbingFooter, Editor } from "@/components";
 import { useDubbingStore } from "@/store";
 import { storeToRefs } from "pinia";
 
 const { editorRef } = storeToRefs(useDubbingStore());
-
-// 编辑器实例，必须用 shallowRef
-editorRef.value = shallowRef().value;
 
 // 内容 HTML
 const valueHtml = ref("<p>hello</p>");
 
 // 模拟 ajax 异步获取内容
 onMounted(() => {
+  console.log("内任凭", editorRef.value.getHtml());
   setTimeout(() => {
     valueHtml.value = "<p>模拟 Ajax 异步设置内容</p>";
   }, 1500);
@@ -52,16 +50,15 @@ onBeforeUnmount(() => {
 const handleCreated = (editor) => {
   editorRef.value = editor; // 记录 editor 实例，重要！
 };
+
+const customButtonClick = () => {};
 </script>
 
 <style lang="scss" scoped>
 .dubbing-editor {
-  margin-left: 4px;
   width: 100%;
   overflow: hidden;
-  background-color: #2254a1;
-  padding: 4px;
-  border-radius: 4px;
+  border-left: 1px solid #fff;
 
   .dubbing-header {
     height: 60px;

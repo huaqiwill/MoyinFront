@@ -2,28 +2,20 @@
   <el-header class="header">
     <div class="menu-container">
       <Logo></Logo>
-      <el-menu
-        :default-active="0"
+      <!-- 菜单 -->
+      <ul
+        default-active="开始配音"
         class="menu-list"
         mode="horizontal"
         :ellipsis="false"
         @select="handleSelect"
       >
-        <el-menu-item :index="0">
-          <router-link to="/dubbing" :key="0">开始配音</router-link>
-        </el-menu-item>
-        <el-menu-item :index="1">
-          <router-link to="/member" :key="2">购买会员</router-link>
-        </el-menu-item>
-        <el-menu-item class="contact-item" :index="2">
-          联系我们
-          <div class="contact-image">
-            <img src="../../../assets/images/微信名片.JPG" alt="微信名片" />
-          </div>
-        </el-menu-item>
-        <div class="flex-grow" />
-      </el-menu>
+        <li class="menu-item selected" v-for="menu in menus" :key="menu.name">
+          <router-link :to="menu.path">{{ menu.name }}</router-link>
+        </li>
+      </ul>
     </div>
+
     <div class="login-container">
       <el-button type="primary" class="login" link v-if="isLogin">
         <router-link to="/login">登录</router-link>
@@ -78,15 +70,15 @@ const menus = [
   {
     path: "/contact",
     name: "联系我们",
+    innerHTML: `联系我们
+          <div class="contact-image">
+            <img src="../../../assets/images/微信名片.JPG" alt="微信名片" />
+          </div>`,
   },
 ];
 </script>
 
 <style scoped lang="scss">
-.flex-grow {
-  flex-grow: 1;
-}
-
 .header {
   display: flex;
   flex-direction: row;
@@ -97,12 +89,22 @@ const menus = [
   .menu-container {
     display: flex;
 
-    .logo {
-    }
-
     .menu-list {
       height: 60px !important;
-      margin-left: 15px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-left: 20px;
+
+      .menu-item {
+        &:hover a {
+          color: red;
+        }
+
+        &.selected a {
+          color: blue;
+        }
+      }
 
       .contact-item {
         position: relative;

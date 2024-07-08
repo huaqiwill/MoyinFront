@@ -7,7 +7,7 @@ export { default as NumericSymbol } from './NumericSymbol.vue';
 export { default as PhoneticMark } from './PhoneticMark.vue';
 export { default as PauseAdjust } from './PauseAdjust.vue';
 export { default as InsertMute } from './InsertMute.vue';
-export { default as SymbolicPause } from './SymbolicPause.vue';
+export { default as SymbolMute } from './SymbolMute.vue';
 export { default as ParagraphMute } from './ParagraphMute.vue';
 export { default as NarrateMode } from './NarrateMode.vue';
 export { default as Volume } from './Volume.vue';

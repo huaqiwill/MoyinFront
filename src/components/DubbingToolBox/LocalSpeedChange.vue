@@ -3,7 +3,7 @@
   <el-popover
     placement="bottom"
     trigger="click"
-    popper-style="width:auto;"
+    :popper-style="popperStyle"
     :show-arrow="false"
   >
     <template #reference>
@@ -12,14 +12,10 @@
         content="从光标处开始试听"
         icon="SpeedChange"
         @click="handleMultiplayerDubbing"
-      ></DubbingButton>
+      />
     </template>
-    <div class="stress">
-      <ul>
-        <li>重读</li>
-        <li>拖音</li>
-        <li>重读+拖音</li>
-      </ul>
+    <div class="speed-adjust">
+      <el-slider v-model="value1" :min="0" :max="2" :step="0.1" :marks="marks" />
     </div>
   </el-popover>
 </template>
@@ -28,11 +24,48 @@
 import { ref } from "vue";
 import { DubbingDialog, DubbingButton } from "@/components";
 
-const handleMultiplayerDubbing = () => {};
+import { useDubbingStore } from "@/store";
+import { storeToRefs } from "pinia";
+
+const { editorRef } = storeToRefs(useDubbingStore());
+const popperStyle = ref("width:auto");
+
+const handleMultiplayerDubbing = () => {
+  const rect = editorRef.value.getCursorPosition();
+  popperStyle.value = `width:auto;left:${rect.left - 16}px;top:${rect.top + 22}px`;
+};
+
+const marks = {
+  0: "0x",
+  0.1: "0.1x",
+  0.2: "0.2x",
+  0.3: "0.2x",
+  0.4: "0.4x",
+  0.5: "0.5x",
+  0.6: "0.6x",
+  0.7: "0.7x",
+  0.8: "0.8x",
+  0.9: "0.9x",
+  1.0: "1.0x",
+  1.1: "1.1x",
+  1.2: "1.2x",
+  1.3: "1.3x",
+  1.4: "1.4x",
+  1.5: "1.5x",
+  1.6: "1.6x",
+  1.7: "1.7x",
+  1.8: "1.8x",
+  1.9: "1.9x",
+  2.0: "2.0x",
+};
+
+const value1 = ref(1);
 </script>
 
 <style lang="scss" scoped>
-.stress {
+.speed-adjust {
+  padding: 10px;
+  width: 800px;
   ul {
     li {
       padding: 10px 0;

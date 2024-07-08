@@ -17,9 +17,9 @@
     </template>
     <div class="volume">
       <span class="demonstration">音量</span>
-      <el-slider v-model="value1" />
+      <el-slider v-model="dubbingVolume" />
       <el-input
-        v-model="value1"
+        v-model="dubbingVolume"
         :formatter="formatPercentage"
         :parser="parsePercentage"
       ></el-input>
@@ -30,6 +30,10 @@
 <script setup>
 import { ref } from "vue";
 import { DubbingDialog, DubbingButton } from "@/components";
+import { useDubbingStore } from "@/store";
+import { storeToRefs } from "pinia";
+
+const { dubbingVolume } = storeToRefs(useDubbingStore());
 
 const formatPercentage = (value) => {
   if (!value) return "";
@@ -45,7 +49,6 @@ const parsePercentage = (value) => {
   return value.replace(/[^\d.-]/g, "");
 };
 
-const value1 = ref(50);
 const handleClicked = () => {};
 </script>
 

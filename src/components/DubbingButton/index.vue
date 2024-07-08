@@ -23,7 +23,7 @@
 
 <script setup>
 import { SvgIcon } from "@/components";
-import { defineProps, computed } from "vue";
+import { defineProps, ref, computed } from "vue";
 
 const props = defineProps({
   title: {
@@ -42,7 +42,7 @@ const props = defineProps({
   },
 });
 
-const hasContent = computed(() => props.content === undefined || props.content === null);
+const hasContent = ref(true);
 
 const emit = defineEmits(["click"]);
 

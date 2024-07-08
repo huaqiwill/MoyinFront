@@ -1,5 +1,5 @@
 <template>
-  <!-- 重音 -->
+  <!-- 文本提取 -->
   <el-popover
     placement="bottom"
     trigger="click"
@@ -7,7 +7,11 @@
     :show-arrow="false"
   >
     <template #reference>
-      <DubbingButton title="文案提取" content="从光标处开始试听"></DubbingButton>
+      <DubbingButton
+        title="文案提取"
+        content="从光标处开始试听"
+        icon="TextExtraction"
+      ></DubbingButton>
     </template>
     <div class="stress">
       <ul>

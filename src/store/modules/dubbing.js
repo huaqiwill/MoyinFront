@@ -9,6 +9,8 @@ export const useDubbingStore = defineStore('dubbing', {
             dubbingSelectedText: "",
             // 编辑器实例
             editorRef: null,
+            // 音量，默认为 50
+            dubbingVolume: 50,
         }
     },
     getters: {
