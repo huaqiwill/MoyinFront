@@ -31,11 +31,20 @@ import { useDubbingStore } from "@/store";
 import { storeToRefs } from "pinia";
 import { ElMessage } from "element-plus";
 
-const { editorRef } = storeToRefs(useDubbingStore());
+const { editorRef, quillEditorRef } = storeToRefs(useDubbingStore());
 const popperStyle = ref(`width:auto;`);
+
 const handleClicked = () => {
-  const rect = editorRef.value.getCursorPosition();
-  popperStyle.value = `width:auto;left:${rect.left - 16}px;top:${rect.top + 22}px`;
+  const quill = quillEditorRef.value.getQuill(); // 获取 Quill 实例
+  const range = quill.getSelection(); // 获取当前光标位置
+  if (range) {
+    const editorElement = quillEditorRef.value.editor.querySelector(".ql-editor");
+    const rect = editorElement.getBoundingClientRect();
+    const bounds = quill.getBounds(range.index, range.length); // 获取光标位置的边界信息
+    const x = rect.x + bounds.right;
+    const y = rect.y + bounds.bottom;
+    popperStyle.value = `width:auto;left:${x}px;top:${y}px`;
+  }
 };
 
 const handleOption = (value) => {

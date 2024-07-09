@@ -32,5 +32,9 @@ import {
 <style lang="scss" scoped>
 .dubbing-sidebar {
   background-color: #f4f6f7;
+  display: flex;
+  // height: 100%;
+  // width: 60px;
+  padding: 4px;
 }
 </style>

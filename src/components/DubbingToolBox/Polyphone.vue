@@ -5,9 +5,9 @@
     title="多音字"
     content="划选单个汉字，单击完成发音纠错"
     icon="dyz"
-    @click="handlePolyphone"
+    @click="onClicked"
   />
-  
+
   <el-popover
     placement="bottom"
     trigger="click"
@@ -32,28 +32,35 @@ import { DubbingDialog, DubbingButton } from "@/components";
 import { useDubbingStore } from "@/store";
 import { storeToRefs } from "pinia";
 import { ElMessage } from "element-plus";
-import { ClickOutside as vClickOutside } from "element-plus";
 
-const { editorRef } = storeToRefs(useDubbingStore());
+const { quillEditorRef, dubbingSelectedText } = storeToRefs(useDubbingStore());
 
 const buttonRef = ref();
 const popoverRef = ref();
 
 // 多音字
-const handlePolyphone = () => {
-  let selectedText = editorRef.value.getSelectionText();
-  console.log(selectedText);
-
-  if (selectedText === "") {
-    ElMessage({
-      message: "请划选文字",
-      type: "warning",
-    });
-    console.log(popoverRef.value);
-    return;
+const onClicked = () => {
+  const quill = quillEditorRef.value.getQuill();
+  const range = quill.getSelection();
+  if (range) {
+    const bounds = quill.getBounds(range.index, range.length);
+    const text = quill.getText(range.index, range.length);
+    console.log(bounds, text);
+    if (text === "" || text.length !== 1) {
+      ElMessage({
+        message: "请划选文字",
+        type: "warning",
+      });
+      return;
+    }
   }
-  popoverRef.value.show(); // 满足条件时显示 popover
 };
+
+
+
+
+
+
 </script>
 
 <style lang="scss" scoped>

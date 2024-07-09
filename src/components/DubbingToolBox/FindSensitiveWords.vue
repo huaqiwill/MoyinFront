@@ -1,27 +1,29 @@
 <template>
   <!-- 查敏感词 -->
-  <el-popover
-    placement="bottom"
-    trigger="click"
-    popper-style="width:auto;"
-    :show-arrow="false"
-  >
-    <template #reference>
-      <DubbingButton title="查敏感词" content="从光标处开始试听" icon="SensitiveWords"></DubbingButton>
-    </template>
-    <div class="stress">
-      <ul>
-        <li>重读</li>
-        <li>拖音</li>
-        <li>重读+拖音</li>
-      </ul>
+  <DubbingButton
+    title="查敏感词"
+    content="从光标处开始试听"
+    icon="SensitiveWords"
+    @click="handleFindSensitiveWords"
+  />
+  <el-dialog v-model="dialogShow" title="查敏感词">
+    <p>包含多个短视频敏感词，让创作者少违规、少限流。如果存在敏感词，会标红。</p>
+    <div>
+      <el-input type="textarea" v-model="text"></el-input>
     </div>
-  </el-popover>
+  </el-dialog>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import { DubbingDialog, DubbingButton } from "@/components";
+import { DubbingButton } from "@/components";
+
+const dialogShow = ref(false);
+const handleFindSensitiveWords = () => {
+  dialogShow.value = true;
+};
+
+const text = ref("");
 </script>
 
 <style lang="scss" scoped>

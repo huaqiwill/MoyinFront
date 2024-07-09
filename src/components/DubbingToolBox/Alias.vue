@@ -11,7 +11,7 @@
         title="别名"
         content="划选数字或符号，点选合适的读法"
         icon="Alias"
-        @click="handleStress"
+        @click="onClicked"
       />
     </template>
     <div class="alias">
@@ -30,16 +30,15 @@ import { ref } from "vue";
 import { DubbingDialog, DubbingButton } from "@/components";
 import { useDubbingStore } from "@/store";
 import { storeToRefs } from "pinia";
-const { editorRef } = storeToRefs(useDubbingStore());
+const { quillEditorRef } = storeToRefs(useDubbingStore());
 
 const alias = ref("");
-
-const handleStress = () => {
-  const rect = editorRef.value.getCursorPosition();
-  popperStyle.value = `width:auto;left:${rect.left - 16}px;top:${rect.top + 22}px`;
-};
-
 const popperStyle = ref(`width:auto;`);
+
+const onClicked = () => {
+  const pos = quillEditorRef.value.getCursorPosition();
+  popperStyle.value = `width:auto;left:${pos.x}px;top:${pos.y}px`;
+};
 </script>
 
 <style lang="scss" scoped>

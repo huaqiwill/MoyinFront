@@ -4,7 +4,7 @@
     title="试听"
     content="划选内容或点击光标，开始逐句试听"
     icon="play"
-    @click="handleTryListening"
+    @click="handleClicked"
   />
 </template>
 
@@ -14,13 +14,11 @@ import { ElMessage } from "element-plus";
 import { useDubbingStore } from "@/store";
 import { storeToRefs } from "pinia";
 
-const dubbingStore = useDubbingStore();
-const { editorRef } = storeToRefs(dubbingStore);
+const { quillEditorRef } = storeToRefs(useDubbingStore());
 
-// 试听
-const handleTryListening = () => {
+const handleClicked = () => {
   ElMessage({
-    message: editorRef.value.getHtml(),
+    message: quillEditorRef.value.getSelectionText(),
     type: "warning",
   });
 };

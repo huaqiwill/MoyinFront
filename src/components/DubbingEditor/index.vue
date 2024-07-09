@@ -1,57 +1,63 @@
 <template>
-  <div class="dubbing-editor">
-    <DubbingHeader @mousedown.prevent="customButtonClick" />
-    <div class="dubbing-content">
-      <Editor
-        class="editor"
-        style="height: 500px; overflow-y: hidden"
-        v-model="valueHtml"
-        ref="editorRef"
-        :defaultConfig="editorConfig"
-        @onCreated="handleCreated"
-      />
-      <DubbingSidebar />
-    </div>
+  <div style="width: 100%; height: 100%">
+    <DubbingHeader id="toolbar" />
+    <QuillEditor ref="quillEditorRef" :style="style" :options="editorOptions" />
   </div>
 </template>
 
 <script setup>
-import "@wangeditor/editor/dist/css/style.css"; // 引入 css
-
-import { onBeforeUnmount, ref, shallowRef, onMounted } from "vue";
-// import { Editor, Toolbar } from "@wangeditor/editor-for-vue";
-import { DubbingHeader, DubbingSidebar, DubbingFooter, Editor } from "@/components";
+import { DubbingHeader } from "@/components";
 import { useDubbingStore } from "@/store";
 import { storeToRefs } from "pinia";
+import { QuillEditor } from "@vueup/vue-quill";
+import "quill/dist/quill.snow.css"; // 导入Quill的样式
+import { onMounted } from "vue";
+import "./lib";
 
-const { editorRef } = storeToRefs(useDubbingStore());
+const { quillEditorRef } = storeToRefs(useDubbingStore());
 
-// 内容 HTML
-const valueHtml = ref("<p>hello</p>");
-
-// 模拟 ajax 异步获取内容
-onMounted(() => {
-  console.log("内任凭", editorRef.value.getHtml());
-  setTimeout(() => {
-    valueHtml.value = "<p>模拟 Ajax 异步设置内容</p>";
-  }, 1500);
-});
-
-const toolbarConfig = {};
-const editorConfig = { placeholder: "请输入内容..." };
-
-// 组件销毁时，也及时销毁编辑器
-onBeforeUnmount(() => {
-  const editor = editorRef.value;
-  if (editor == null) return;
-  editor.destroy();
-});
-
-const handleCreated = (editor) => {
-  editorRef.value = editor; // 记录 editor 实例，重要！
+const editorOptions = {
+  // debug: "info",
+  modules: {
+    toolbar: {
+      container: "#toolbar", // 绑定自定义工具栏
+    },
+  },
+  placeholder: "尽情开始你的创作...",
+  theme: "snow",
 };
 
-const customButtonClick = () => {};
+const style = {
+  fontFamily: "微软雅黑",
+  fontSize: "22px",
+};
+
+onMounted(() => {
+  // 获取选中的文本
+  quillEditorRef.value.getSelectionText = () => {
+    const quill = quillEditorRef.value.getQuill();
+    const range = quill.getSelection();
+    if (range) {
+      return quill.getText(range.index, range.length);
+    }
+    return "";
+  };
+
+  // 获取光标的位置
+  quillEditorRef.value.getCursorPosition = () => {
+    const quill = quillEditorRef.value.getQuill(); // 获取 Quill 实例
+    const range = quill.getSelection(); // 获取当前光标位置
+    if (range) {
+      const editorElement = quillEditorRef.value.editor.querySelector(".ql-editor");
+      const rect = editorElement.getBoundingClientRect();
+      const bounds = quill.getBounds(range.index, range.length); // 获取光标位置的边界信息
+      const x = rect.x + bounds.right;
+      const y = rect.y + bounds.bottom;
+      return { x, y };
+    }
+    return { x: 0, y: 0 };
+  };
+});
 </script>
 
 <style lang="scss" scoped>
@@ -59,29 +65,5 @@ const customButtonClick = () => {};
   width: 100%;
   overflow: hidden;
   border-left: 1px solid #fff;
-
-  .dubbing-header {
-    height: 60px;
-  }
-
-  .dubbing-content {
-    height: 100%;
-    display: flex;
-
-    .editor {
-      height: 100%;
-      width: calc(100% - 60px);
-    }
-
-    .dubbing-sidebar {
-      height: 100%;
-      width: 60px;
-      padding: 4px;
-    }
-  }
-
-  .dubbing-footer {
-    height: 200px;
-  }
 }
 </style>

@@ -11,7 +11,7 @@ import { ElMessageBox } from "element-plus";
 import { useDubbingStore } from "@/store";
 import { storeToRefs } from "pinia";
 
-const { editorRef } = storeToRefs(useDubbingStore());
+const { quillEditorRef } = storeToRefs(useDubbingStore());
 
 // 清空文本
 const handleClearText = () => {
@@ -20,7 +20,8 @@ const handleClearText = () => {
     cancelButtonText: "取消",
     type: "warning",
   }).then(() => {
-    editorRef.value.clear();
+    const quill = quillEditorRef.value.getQuill();
+    quill.setContents([{ insert: "\n" }]); // 设置内容为空
   });
 };
 </script>

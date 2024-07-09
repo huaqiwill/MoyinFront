@@ -1,13 +1,8 @@
 <template>
   <div class="editor">
     <!-- 编辑器 -->
-    <div contenteditable="true" ref="editable" class="editable" @input="onInput">
-      <div class="word-item" v-for="word in words" :key="word">
-        <div class="a">
-          <Stress name="重音"/>
-          <span style="display: block">{{ word }}</span>
-        </div>
-      </div>
+    <div contenteditable="false" ref="editable" class="editable" @input="onInput">
+      <Text />
     </div>
     <!-- 编辑器footer -->
     <div class="footer">
@@ -20,7 +15,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { ElMessage } from "element-plus";
-import { Stress } from "./Tag";
+import { Text } from "./Tag";
 
 const editable = ref();
 
