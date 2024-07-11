@@ -101,15 +101,17 @@ import {
   GenerateLogging,
   ClearText,
   DubbingConfig,
-} from "@/components/DubbingToolBox";
+} from "./index";
 </script>
 
 <style scoped lang="scss">
 .dubbing-header {
-  background-color: #f4f6f7;
+  // background-color: #f4f6f7;
   display: flex;
   flex-direction: row;
   padding: 4px;
+  border: 1px solid #e5e6eb !important;
+  border-bottom: none !important;
 
   height: 120px;
   .tool-list {

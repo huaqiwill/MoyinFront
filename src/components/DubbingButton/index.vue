@@ -12,6 +12,10 @@
       effect="light"
     >
       <template #reference>
+        <!-- <a-button type="primary" @click="handleAudition">
+          <SvgIcon :name="icon"></SvgIcon>
+          <div class="name">{{ title }}</div>
+        </a-button> -->
         <div class="tool-item" @click="handleAudition">
           <SvgIcon :name="icon"></SvgIcon>
           <div class="name">{{ title }}</div>

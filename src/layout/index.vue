@@ -1,6 +1,6 @@
 <template>
   <div class="common-layout">
-    <Header></Header>
+    <Header />
     <div class="content">
       <router-view v-slot="{ Component }">
         <transition name="fade">
@@ -8,7 +8,7 @@
         </transition>
       </router-view>
     </div>
-    <Footer></Footer>
+    <Footer />
   </div>
 </template>
 
@@ -18,15 +18,7 @@ import { Header, Footer } from "./components";
 
 <style scoped lang="scss">
 .common-layout {
-  height: 100vh;
-
-  .header {
-    height: 60px;
-  }
-
-  .footer {
-    height: 40px;
-  }
+  // height: 100vh;
 
   .content {
     padding: 4px 6px;

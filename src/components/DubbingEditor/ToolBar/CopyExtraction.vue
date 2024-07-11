@@ -1,13 +1,18 @@
 <template>
-  <!-- 配音配置 -->
-  <DubbingButton
-    title="配音配置"
-    content="从光标处开始试听"
-    icon="settings"
-    @click="okClicked"
-  ></DubbingButton>
-
-  <el-dialog v-model="dialogShow" title="配音配置">
+  <!-- 文本提取 -->
+  <el-popover
+    placement="bottom"
+    trigger="click"
+    popper-style="width:auto;"
+    :show-arrow="false"
+  >
+    <template #reference>
+      <DubbingButton
+        title="文案提取"
+        content="从光标处开始试听"
+        icon="TextExtraction"
+      ></DubbingButton>
+    </template>
     <div class="stress">
       <ul>
         <li>重读</li>
@@ -15,18 +20,12 @@
         <li>重读+拖音</li>
       </ul>
     </div>
-  </el-dialog>
+  </el-popover>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import { DubbingDialog, DubbingButton } from "@/components";
-
-const okClicked = () => {
-  dialogShow.value = true;
-};
-
-const dialogShow = ref(false);
 </script>
 
 <style lang="scss" scoped>

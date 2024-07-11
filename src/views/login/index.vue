@@ -59,6 +59,10 @@ import { User, Lock, Key } from "@element-plus/icons-vue";
 import { useRoute, useRouter } from "vue-router";
 import { login, getCodeImg } from "@/api/login.js";
 
+import { useUserStore } from "@/store/index";
+import { setToken } from "@/utils/auth";
+const { token } = useUserStore();
+
 const route = useRoute();
 
 const router = useRouter();
@@ -85,6 +89,7 @@ onMounted(() => {
 // 登录
 const handleLogin = () => {
   login(loginForm).then((res) => {
+    setToken(res.token);
     router.push({ path: "/" }).catch(() => {});
   });
 };

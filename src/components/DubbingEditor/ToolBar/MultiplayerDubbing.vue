@@ -1,13 +1,12 @@
 <template>
-  <!-- 配音配置 -->
+  <!-- 多人配音 -->
   <DubbingButton
-    title="配音配置"
+    title="多人配音"
+    icon="d"
     content="从光标处开始试听"
-    icon="settings"
-    @click="okClicked"
-  ></DubbingButton>
-
-  <el-dialog v-model="dialogShow" title="配音配置">
+    @click="handleClicked"
+  />
+  <el-dialog v-model="dialogShow" title="多人配音">
     <div class="stress">
       <ul>
         <li>重读</li>
@@ -22,10 +21,9 @@
 import { ref } from "vue";
 import { DubbingDialog, DubbingButton } from "@/components";
 
-const okClicked = () => {
+const handleClicked = () => {
   dialogShow.value = true;
 };
-
 const dialogShow = ref(false);
 </script>
 

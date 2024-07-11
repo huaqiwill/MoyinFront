@@ -27,7 +27,7 @@ import { ElMessage } from "element-plus";
 
 const { quillEditorRef } = storeToRefs(useDubbingStore());
 
-const dialogShow = ref(false);
+const dialogShow = ref(true);
 
 const onSelect = (item) => {};
 

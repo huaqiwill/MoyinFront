@@ -7,7 +7,7 @@
     @click="handleClicked"
   />
 
-  <el-dialog v-model="dialogVisible" title="生成记录">
+  <el-dialog v-model="dialogVisible" :title="生成记录">
     <p>只保存本设备的最近24小时记录</p>
     <el-table :data="tableData" style="width: 100%">
       <el-table-column prop="date" label="Date" width="180" />

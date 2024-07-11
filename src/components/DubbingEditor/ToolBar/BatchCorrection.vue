@@ -4,15 +4,12 @@
     title="批量纠音"
     content="从光标处开始试听"
     icon="BatchSorrection"
-    @click="onClicked"
+    @click="handleClicked"
   />
 
   <el-dialog v-model="dialogShow" title="多音字检测">
     <p>点击要修改发音的汉字，选择想要的发音</p>
     <p>若有多音字发音不对，可输入发音相同的字替代</p>
-    <el-input></el-input>
-    <el-button>确定</el-button>
-    <el-button>取消</el-button>
   </el-dialog>
 </template>
 
@@ -22,7 +19,7 @@ import { DubbingDialog, DubbingButton } from "@/components";
 
 const dialogShow = ref(false);
 
-const onClicked = () => {
+const handleClicked = () => {
   dialogShow.value = true;
 };
 </script>

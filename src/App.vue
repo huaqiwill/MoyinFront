@@ -8,6 +8,6 @@
 </script>
 <style scoped lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "微软雅黑";
 }
 </style>

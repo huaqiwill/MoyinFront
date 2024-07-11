@@ -1,29 +1,24 @@
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
 
-export const useUserStore = defineStore('user', {
-    state: () => {
-        return {
-            isPlaying: false,
-            currentSong: {},
-            currentSongIndex: 0,
-            songList: [],
-            isShow: false,
-            isShowPlayList: false,
-            isShowLyric: false,
-            isShowComment: false,
-            isShowSearch: false,
-            isShowMv: false,
-            isShowMvList: false,
-            isShowMvDetail: false,
-            isShowMvPlay: false,
-        }
-    },
-    getters: {
-
-    },
-    actions: {
-        async login(){
-            
-        }
-    }
-})
+export const useUserStore = defineStore("user", {
+  state: () => {
+    return {
+      token: "",
+      isPlaying: false,
+      currentSong: {},
+      currentSongIndex: 0,
+      songList: [],
+      isShow: false,
+      isShowPlayList: false,
+      isShowLyric: false,
+      isShowComment: false,
+      isShowSearch: false,
+      isShowMv: false,
+      isShowMvList: false,
+      isShowMvDetail: false,
+      isShowMvPlay: false,
+    };
+  },
+  getters: {},
+  actions: {},
+});

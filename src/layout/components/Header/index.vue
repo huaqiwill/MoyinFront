@@ -1,8 +1,19 @@
 <template>
   <el-header class="header">
-    <div class="menu-container">
-      <Logo></Logo>
-      <!-- 菜单 -->
+    <a-menu mode="horizontal" :default-selected-keys="['开始配音']">
+      <a-menu-item
+        key="0"
+        :style="{ padding: 0, marginRight: '38px', cursor: 'pointer' }"
+        disabled
+      >
+        <Logo></Logo>
+      </a-menu-item>
+      <a-menu-item v-for="menu in menus" :key="menu.name">
+        <router-link :to="menu.path">{{ menu.name }}</router-link>
+      </a-menu-item>
+    </a-menu>
+
+    <!-- <div class="menu-container">
       <ul
         default-active="开始配音"
         class="menu-list"
@@ -14,8 +25,14 @@
           <router-link :to="menu.path">{{ menu.name }}</router-link>
         </li>
       </ul>
-    </div>
+    </div> -->
 
+    <a-space>
+      <a-link href="/login">登录</a-link>
+      <a-link href="/register">注册</a-link>
+    </a-space>
+
+    <!-- 
     <div class="login-container">
       <el-button type="primary" class="login" link v-if="isLogin">
         <router-link to="/login">登录</router-link>
@@ -35,8 +52,8 @@
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-    </div>
-    <LoginOrRegister :show="loginOrRegisterDialogShow"></LoginOrRegister>
+    </div> -->
+    <!-- <LoginOrRegister :show="loginOrRegisterDialogShow"></LoginOrRegister> -->
   </el-header>
 </template>
 
@@ -83,8 +100,7 @@ const menus = [
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 60px;
-  border-bottom: 1px solid #dcdfe6;
+  // border-bottom: 1px solid #dcdfe6;
 
   .menu-container {
     display: flex;

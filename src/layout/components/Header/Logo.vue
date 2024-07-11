@@ -22,6 +22,7 @@ import { SvgIcon } from "@/components";
   h1 {
     font-size: 20px;
     margin-left: 10px;
+    color: #000;
   }
 }
 </style>
