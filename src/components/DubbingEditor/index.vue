@@ -1,13 +1,16 @@
 <template>
-  <div style="margin-left: 5px;">
-    <ToolBar id="toolbar" />
-    <Editor />
+  <div style="margin-left: 5px">
+    <!-- <ToolBar id="toolbar" /> -->
+    <!-- <Editor /> -->
+    <EditorView></EditorView>
   </div>
 </template>
 
 <script setup>
 import { ToolBar } from "./ToolBar";
 import { Editor } from "./index";
+
+import { EditorView } from "@mekumiao/ssml-editor";
 </script>
 
 <style lang="scss" scoped>

@@ -12,12 +12,17 @@ import "element-plus/dist/index.css";
 import ArcoVue from "@arco-design/web-vue";
 import "@arco-design/web-vue/dist/arco.css";
 
+import "@mekumiao/ssml-editor/dist/style.css";
+
+import SSMLEditor from "@mekumiao/ssml-editor";
+
 import "@/assets/styles/style.css";
 
 const pinia = createPinia();
 const app = createApp(App);
 
 //
+app.use(SSMLEditor);
 app.use(router);
 app.use(ArcoVue);
 app.use(pinia);
