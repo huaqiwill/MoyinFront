@@ -1,50 +1,53 @@
-<script setup lang="ts">
-import type { LabelValue } from '@/model'
-import { ref, watch } from 'vue'
-import { useElementVisibility } from '@vueuse/core'
-import AudioUpload from './audio-upload.vue'
+<script setup>
+import { ref, watch } from "vue";
+import { useElementVisibility } from "@vueuse/core";
+import AudioUpload from "./audio-upload.vue";
 
-defineEmits<{ submit: [value: LabelValue] }>()
-defineProps<{ text: string }>()
+defineEmits("submit");
+defineProps("text");
 
-const boxRef = ref<HTMLElement>()
-const audioUploadRef = ref()
+const boxRef = ref();
+const audioUploadRef = ref();
 
-const showText = ref<boolean>(true)
-const showAudioUpload = ref<boolean>(false)
+const showText = ref(true);
+const showAudioUpload = ref(false);
 
-const visible = useElementVisibility(boxRef)
+const visible = useElementVisibility(boxRef);
 
 watch(visible, (newValue) => {
   if (!newValue) {
-    showText.value = true
-    showAudioUpload.value = false
+    showText.value = true;
+    showAudioUpload.value = false;
   }
-})
+});
 
 function handleOpenRecord() {
-  showText.value = true
-  showAudioUpload.value = true
+  showText.value = true;
+  showAudioUpload.value = true;
 }
 
 async function handleOpenInputFile() {
   if (await audioUploadRef.value?.openInputFile()) {
-    showText.value = false
-    showAudioUpload.value = true
+    showText.value = false;
+    showAudioUpload.value = true;
   }
 }
 
 function reopen() {
-  showText.value = true
-  showAudioUpload.value = false
+  showText.value = true;
+  showAudioUpload.value = false;
 }
 </script>
 
 <template>
   <div ref="boxRef" class="px-2 py-1" style="width: 410px">
     <section class="fw-bold" v-show="showText" style="font-size: 0.65rem">
-      <p class="text-start text-danger">请在安静的环境中进行录音，以需要转换的风格，读出以下文案</p>
-      <div class="border border-secondary rounded p-2 w-100" style="height: 100px">{{ text }}</div>
+      <p class="text-start text-danger">
+        请在安静的环境中进行录音，以需要转换的风格，读出以下文案
+      </p>
+      <div class="border border-secondary rounded p-2 w-100" style="height: 100px">
+        {{ text }}
+      </div>
     </section>
     <section class="mt-2" v-show="!showAudioUpload">
       <div class="w-100 d-flex flex-column row-gap-1">

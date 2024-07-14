@@ -1,5 +1,5 @@
 <script setup>
-import { ElPopover } from "element-plus";
+// import { ElPopover } from "element-plus";
 
 defineEmits("update:visible");
 defineProps({
@@ -10,7 +10,7 @@ defineProps({
     type: Number,
   },
   placement: {
-    type: Placement,
+    type: Object,
   },
 });
 </script>

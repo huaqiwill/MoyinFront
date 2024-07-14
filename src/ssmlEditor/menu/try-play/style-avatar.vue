@@ -1,20 +1,17 @@
 <script setup>
-import { defaultAvatar } from "@/config";
+import { defaultAvatar } from "@/ssmlEditor/config";
 
 defineEmits("click");
 
 const props = defineProps({
   activate: {
     type: Boolean,
+    default: false,
   },
   data: {
     type: Object,
+    default: { label: "", value: "" },
   },
-});
-
-withDefaults(props, {
-  activate: false,
-  data: () => ({ label: "", value: "" }),
 });
 
 function getRandomColor() {

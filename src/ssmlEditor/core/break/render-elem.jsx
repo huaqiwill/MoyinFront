@@ -1,5 +1,3 @@
-import { jsx, type VNode } from "snabbdom";
-import { SlateElement, type IDomEditor } from "@wangeditor/editor";
 import { handleDeleteNode, handleSSMLRemarkClick } from "../helper";
 
 export default {

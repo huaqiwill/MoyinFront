@@ -1,5 +1,5 @@
 import { SlateRange } from "@wangeditor/editor";
-import { emitter } from "@/event-bus";
+import { emitter } from "@/ssmlEditor/event-bus";
 import BaseFn from "../base-fn";
 import { readValueMap } from "./data";
 

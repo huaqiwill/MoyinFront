@@ -10,7 +10,7 @@ export const useSSMLStore = defineStore("--editor-ssml", () => {
     children: [],
   });
 
-  const rootBackgroundAudio = shallowReactive({
+  const rootBackgroundaudio = shallowReactive({
     type: "ssml-mstts:backgroundaudio",
     src: "",
     remark: "",
@@ -31,5 +31,5 @@ export const useSSMLStore = defineStore("--editor-ssml", () => {
     children: [],
   };
 
-  return { rootVoice, rootBackgroundAudio: rootBackgroundAudio, rootExpressAs, rootProsody };
+  return { rootVoice, rootBackgroundaudio, rootExpressAs, rootProsody };
 });

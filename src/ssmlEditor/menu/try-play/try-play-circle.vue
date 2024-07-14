@@ -1,8 +1,8 @@
 <script setup>
 import { ref, inject, onMounted } from "vue";
-import { useConstrainDragBounds } from "@/components";
+import { useConstrainDragBounds } from "@/ssmlEditor/components";
 import { useDraggable, useElementBounding } from "@vueuse/core";
-import { useTryPlayStore } from "@/stores";
+import { useTryPlayStore } from "@/store";
 import PlayButton from "./play-button.vue";
 
 const emit = defineEmits("update:visible");

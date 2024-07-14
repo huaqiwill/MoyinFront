@@ -18,8 +18,16 @@ import SSMLEditor from "@mekumiao/ssml-editor";
 
 import "@/assets/styles/style.css";
 
+
 const pinia = createPinia();
 const app = createApp(App);
+
+import hljs from "highlight.js/lib/core";
+import xml from "highlight.js/lib/languages/javascript";
+hljs.registerLanguage("xml", xml);
+
+import hljsVuePlugin from "@highlightjs/vue-plugin";
+app.use(hljsVuePlugin);
 
 //
 app.use(SSMLEditor);

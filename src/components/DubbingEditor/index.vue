@@ -10,7 +10,8 @@
 import { ToolBar } from "./ToolBar";
 import { Editor } from "./index";
 
-import { EditorView } from "@mekumiao/ssml-editor";
+// import { EditorView } from "@mekumiao/ssml-editor";
+import { EditorView } from "@/ssmlEditor";
 </script>
 
 <style lang="scss" scoped>

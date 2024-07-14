@@ -1,10 +1,8 @@
-import type { SlateElement } from '@wangeditor/editor'
-import type { Break } from './custom-types'
 
 export default {
   type: 'ssml-break',
-  elemToHtml: (elem: SlateElement) => {
-    const { remark, time = '', strength = 'medium' } = elem as Break
+  elemToHtml: (elem) => {
+    const { remark, time = '', strength = 'medium' } = elem
     const html = `<span
           data-w-e-type="ssml-break"
           data-w-e-is-void

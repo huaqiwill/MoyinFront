@@ -1,12 +1,12 @@
 import { defineStore } from "pinia";
 import { computed, readonly, ref, shallowRef } from "vue";
-import { defaultSpeaker } from "@/model";
+import { defaultSpeaker } from "@/ssmlEditor/model";
 import { useSSMLStore } from "./ssml";
-import AudioPlayer from "@/menu/conversion-menu/audio-player";
-import { serializeToSSML } from "@/serialize";
-import { sleep } from "@/utils";
-import { emitter } from "@/event-bus";
-import { getConfig } from "@/config";
+import AudioPlayer from "@/ssmlEditor/menu/conversion-menu/audio-player";
+import { serializeToSSML } from "@/ssmlEditor/serialize";
+import { sleep } from "@/ssmlEditor/utils";
+import { emitter } from "@/ssmlEditor/event-bus";
+import { getConfig } from "@/ssmlEditor/config";
 
 export const useTryPlayStore = defineStore("--editor-try-play", () => {
   const ssmlStore = useSSMLStore();

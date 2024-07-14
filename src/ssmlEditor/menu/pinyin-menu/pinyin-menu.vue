@@ -1,10 +1,10 @@
 <script setup>
 import { ref, shallowRef } from "vue";
-import { BarButton } from "@/components";
+import { BarButton } from "@/ssmlEditor/components";
 import { ElPopover } from "element-plus";
 import { PinyinFn } from "./pinyin-fn";
-import { emitter } from "@/event-bus";
-import { polyphoneDataToLabelValue, getPolyphoneData } from "@/utils";
+import { emitter } from "@/ssmlEditor/event-bus";
+import { polyphoneDataToLabelValue, getPolyphoneData } from "@/ssmlEditor/utils";
 
 const fn = shallowRef();
 const pyList = ref([]);

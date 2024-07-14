@@ -1,5 +1,5 @@
 import { SlateEditor, SlateRange } from "@wangeditor/editor";
-import { emitter } from "@/event-bus";
+import { emitter } from "@/ssmlEditor/event-bus";
 import BaseFn from "../base-fn";
 
 export class DigitalFn extends BaseFn {

@@ -1,9 +1,9 @@
 <script setup>
 import { inject, onMounted, onUnmounted, ref, shallowRef, toRaw, watch } from 'vue'
 import SpeakerAvatar from './speaker-avatar.vue'
-import { useTryPlayStore } from '@/stores'
-import { getConfig } from '@/config'
-import { emitter } from '@/event-bus'
+import { useTryPlayStore } from '@/store'
+import { getConfig } from '@/ssmlEditor/config'
+import { emitter } from '@/ssmlEditor/event-bus'
 
 const props = defineProps({
   filter:{

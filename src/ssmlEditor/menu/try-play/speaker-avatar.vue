@@ -1,5 +1,5 @@
 <script setup>
-import { defaultAvatar } from "@/config";
+import { defaultAvatar } from "@/ssmlEditor/config";
 
 defineEmits("click");
 defineProps({

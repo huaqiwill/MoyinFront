@@ -3,8 +3,8 @@ import { BarButton } from '@/ssmlEditor/components'
 import { inject, ref, shallowRef } from 'vue'
 import { useElementBounding } from '@vueuse/core'
 import { DragBox, BarSearch } from '@/ssmlEditor/components'
-import { useSSMLStore } from '@/stores'
-import { getConfig } from '@/config'
+import { useSSMLStore } from '@/store'
+import { getConfig } from '@/ssmlEditor/config'
 
 const dragRef = ref()
 const menuRef = ref()

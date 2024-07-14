@@ -2,7 +2,7 @@
 import { BarButton } from '@/ssmlEditor/components'
 import { ref, shallowRef } from 'vue'
 import { useElementBounding } from '@vueuse/core'
-import { DragBox } from '@/components'
+import { DragBox } from '@/ssmlEditor/components'
 import ConversionContent from './conversion-content.vue'
 import { ConversionFn } from './conversion-fn'
 

@@ -1,11 +1,11 @@
 <script setup>
 import { computed, ref, inject } from 'vue'
-import { defaultAvatar } from '@/config'
-import { useTryPlayStore } from '@/stores'
+import { defaultAvatar } from '@/ssmlEditor/config'
+import { useTryPlayStore } from '@/store'
 import { ElIcon } from 'element-plus'
 import { Loading } from '@element-plus/icons-vue'
 import throttle from 'lodash.throttle'
-import { getConfig } from '@/config'
+import { getConfig } from '@/ssmlEditor/config'
 
 const props = defineProps({
   size:{

@@ -1,9 +1,9 @@
 <script setup>
-import { ElMenu, ElMenuItem, ElOption, ElSelect, ElInput, ElForm } from "element-plus";
+// import { ElMenu, ElMenuItem, ElOption, ElSelect, ElInput, ElForm } from "element-plus";
 import { onMounted, ref, toRaw, watch, nextTick } from "vue";
 import { Search } from "@element-plus/icons-vue";
 import { useElementVisibility } from "@vueuse/core";
-import { emitter } from "@/event-bus";
+import { emitter } from "@/ssmlEditor/event-bus";
 
 const emit = defineEmits("submit");
 

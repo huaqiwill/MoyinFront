@@ -1,6 +1,6 @@
 import { SlateRange } from "@wangeditor/editor";
 import BaseFn from "../base-fn";
-import { emitter } from "@/event-bus";
+import { emitter } from "@/ssmlEditor/event-bus";
 
 export class RhythmFn extends BaseFn {
   constructor(editor) {

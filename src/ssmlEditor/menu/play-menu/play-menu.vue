@@ -1,10 +1,10 @@
 <script setup>
-import { useTryPlayStore } from '@/stores'
+import { useTryPlayStore } from '@/store'
 import { ElIcon } from 'element-plus'
 import { Loading } from '@element-plus/icons-vue'
 import { BarButton } from '@/ssmlEditor/components'
 import throttle from 'lodash.throttle'
-import { getConfig } from '@/config'
+import { getConfig } from '@/ssmlEditor/config'
 import { inject } from 'vue'
 
 defineProps({

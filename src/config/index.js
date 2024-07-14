@@ -18,5 +18,3 @@ export const token =
 
 export const title = "魔音配音工具";
 
-export * from "./editor-config";
-export * from "./data";

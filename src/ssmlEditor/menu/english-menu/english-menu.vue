@@ -1,10 +1,10 @@
 <script setup>
 import { inject, ref, shallowRef } from "vue";
-import { BarButton, BarPopover } from "@/components";
-import { selectionTrimEnd } from "@/core/helper";
+import { BarButton, BarPopover } from "@/ssmlEditor/components";
+import { selectionTrimEnd } from "@/ssmlEditor/core/helper";
 import { EnglishFn } from "./english-fn";
-import { emitter } from "@/event-bus";
-import { getConfig } from "@/config";
+import { emitter } from "@/ssmlEditor/event-bus";
+import { getConfig } from "@/ssmlEditor/config";
 
 const editorKey = inject("editorKey");
 const ssmlEditorConfig = getConfig(editorKey);

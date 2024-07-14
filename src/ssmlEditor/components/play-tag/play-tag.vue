@@ -2,7 +2,7 @@
 import { ElIcon, ElTag } from "element-plus";
 import { Loading } from "@element-plus/icons-vue";
 import { reactive } from "vue";
-import { sleep } from "@/utils";
+import { sleep } from "@/ssmlEditor/utils";
 import { AudioPlayer } from "./audio-player";
 import throttle from "lodash.throttle";
 

@@ -1,14 +1,14 @@
 <script setup>
-import { defaultFilterSpeaker } from "@/model";
+import { defaultFilterSpeaker } from "@/ssmlEditor/model";
 import { ElInput, ElForm, ElTag, ElButton } from "element-plus";
 import { More, Search } from "@element-plus/icons-vue";
 import SelectList from "./select-list.vue";
 import { computed, inject, onMounted, ref, shallowRef, watch, nextTick } from "vue";
 import { speed, pitch } from "./data";
-import { emitter } from "@/event-bus";
+import { emitter } from "@/ssmlEditor/event-bus";
 import { useElementVisibility } from "@vueuse/core";
 import uniqBy from "lodash.uniqby";
-import { getConfig } from "@/config";
+import { getConfig } from "@/ssmlEditor/config";
 
 const emit = defineEmits(["submit", "update:contentData"]);
 const props = defineProps({

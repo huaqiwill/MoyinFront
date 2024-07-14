@@ -1,5 +1,5 @@
 import { SlateEditor } from "@wangeditor/editor";
-import { emitter } from "@/event-bus";
+import { emitter } from "@/ssmlEditor/event-bus";
 
 export default class BaseFn {
   constructor(editor) {

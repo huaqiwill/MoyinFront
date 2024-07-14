@@ -1,6 +1,6 @@
 <script setup>
 import { ElForm, ElInput } from "element-plus";
-import { defaultFilterSpeaker } from "@/model";
+import { defaultFilterSpeaker } from "@/ssmlEditor/model";
 import SpeakerAvatarList from "./speaker-avatar-list.vue";
 import SimpleTagList from "./simple-tag-list.vue";
 import { ref, nextTick, watch } from "vue";

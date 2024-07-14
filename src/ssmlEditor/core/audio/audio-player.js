@@ -11,7 +11,7 @@ export class AudioPlayer {
     return this.audio.src;
   }
 
-  load(src: string) {
+  load(src) {
     return new Promise((resolve, reject) => {
       this.audio.src = src;
       this.audio.addEventListener("canplaythrough", () => resolve(), {

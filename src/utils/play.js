@@ -10,7 +10,7 @@ export class AudioPlayer {
     this.audio.volume = 0.5
   }
 
-  play(src: string) {
+  play(src) {
     this.audio.pause()
     this.audio.src = src
     this.audio.play()

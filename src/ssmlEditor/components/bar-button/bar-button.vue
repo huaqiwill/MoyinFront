@@ -1,5 +1,5 @@
 <script setup>
-import { useEditorStore } from "@/stores";
+import { useEditorStore } from "@/store";
 import throttle from "lodash.throttle";
 
 const emit = defineEmits("click");

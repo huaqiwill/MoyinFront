@@ -2,9 +2,9 @@
 import RightPanle from "./right-panle.vue";
 import LeftPanle from "./left-panle.vue";
 import { onMounted, onUnmounted, ref, inject } from "vue";
-import { useConstrainDragBounds } from "@/components";
+import { useConstrainDragBounds } from "@/ssmlEditor/components";
 import { useDraggable, useElementBounding } from "@vueuse/core";
-import { emitter } from "@/event-bus";
+import { emitter } from "@/ssmlEditor/event-bus";
 
 const emit = defineEmits("update:visible");
 const props = defineProps({

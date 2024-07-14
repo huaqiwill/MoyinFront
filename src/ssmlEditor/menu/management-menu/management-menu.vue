@@ -1,13 +1,13 @@
 <script setup>
-import { BarButton, DragBox } from '@/components'
+import { BarButton, DragBox } from '@/ssmlEditor/components'
 import { onMounted, reactive, ref, shallowRef, onUnmounted, nextTick } from 'vue'
 import { useElementBounding } from '@vueuse/core'
 import ManagementContent from './management-content.vue'
 import { defaultContentData} from './data'
 import { ManagementFn } from './management-fn'
-import { getEmitter } from '@/core/emitter'
-import { emitter } from '@/event-bus'
-import { useEditorStore } from '@/stores'
+import { getEmitter } from '@/ssmlEditor/core/emitter'
+import { emitter } from '@/ssmlEditor/event-bus'
+import { useEditorStore } from '@/store'
 
 const dragRef = ref()
 const menuRef = ref()

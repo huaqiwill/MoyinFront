@@ -1,19 +1,17 @@
-import { SlateRange, type IDomEditor } from '@wangeditor/editor'
+import { SlateRange } from '@wangeditor/editor'
 import BaseFn from '../base-fn'
-import { emitter } from '@/event-bus'
-import type { LabelValue } from '@/model'
-import type { Audio } from '@/core'
+import { emitter } from '@/ssmlEditor/event-bus'
 
 export class ConversionFn extends BaseFn {
-  public constructor(editor: IDomEditor) {
+   constructor(editor) {
     super(editor)
   }
 
-  public getValue(): string {
+   getValue() {
     return super.getValue()
   }
 
-  public isDisabled(): boolean {
+   isDisabled() {
     if (super.isDisabled()) return true
     const { selection } = this.editor
     if (selection == null) return true
@@ -26,13 +24,13 @@ export class ConversionFn extends BaseFn {
     return false
   }
 
-  exec(opt: LabelValue) {
+  exec(opt) {
     this.editor.restoreSelection()
     if (this.isDisabled()) return
     const value = this.getValue()
     if (value == null) return
 
-    const node: Audio = {
+    const node = {
       type: 'ssml-audio',
       remark: opt.label,
       src: opt.value,

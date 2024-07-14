@@ -1,7 +1,7 @@
 <script setup>
 import SimpleTag from './simple-tag.vue'
 import { inject, onMounted, ref, toRaw } from 'vue'
-import { getConfig } from '@/config'
+import { getConfig } from '@/ssmlEditor/config'
 
 const emit = defineEmits('update:filter')
 const props = defineProps({

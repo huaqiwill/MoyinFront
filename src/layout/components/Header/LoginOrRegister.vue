@@ -7,10 +7,18 @@
     <el-card class="card">
       <el-form label-width="auto" :model="form" :rules="formRules">
         <el-form-item size="large">
-          <el-input :prefix-icon="User" v-model="form.username" placeholder="请输入用户名" />
+          <el-input
+            :prefix-icon="User"
+            v-model="form.username"
+            placeholder="请输入用户名"
+          />
         </el-form-item>
         <el-form-item size="large">
-          <el-input :prefix-icon="Lock" v-model="form.password" placeholder="请输入密码" />
+          <el-input
+            :prefix-icon="Lock"
+            v-model="form.password"
+            placeholder="请输入密码"
+          />
         </el-form-item>
         <el-form-item size="large">
           <el-input :prefix-icon="Key" v-model="form.code" placeholder="请输入验证码">
@@ -38,9 +46,9 @@
   </el-dialog>
 </template>
 
-<script setup lang="ts">
-import { ref, reactive, watch, Prop, computed, defineProps } from "vue";
-import { ElMessage, TabsPaneContext } from "element-plus";
+<script setup>
+import { ref, reactive, watch, computed, defineProps } from "vue";
+import { ElMessage } from "element-plus";
 import { User, Lock, Key } from "@element-plus/icons-vue";
 
 const userProtocol = () => {
@@ -48,10 +56,9 @@ const userProtocol = () => {
 };
 
 // 属性
-interface Props {
-  show: boolean;
-}
-const props = defineProps<Props>();
+const props = defineProps({
+  show: Boolean,
+});
 
 const dialogShow = ref(props.show);
 watch(
@@ -93,7 +100,7 @@ const register = () => {
 
 // TabBar
 const userLoginActiveName = ref("login");
-const handleUserLoginTabClick = (tab: TabsPaneContext, event: Event) => {
+const handleUserLoginTabClick = (tab, event) => {
   console.log(tab, event);
 };
 

@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { computed, ref, shallowRef } from "vue";
-import { getConfig } from "@/config";
+import { getConfig } from "@/ssmlEditor/config";
 import throttle from "lodash.throttle";
 
 export const useEditorStore = defineStore("--editor-config", () => {

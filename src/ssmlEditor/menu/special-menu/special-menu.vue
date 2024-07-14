@@ -1,10 +1,10 @@
 <script setup>
-import { BarButton } from "@/components";
+import { BarButton } from "@/ssmlEditor/components";
 import { inject, ref, shallowRef } from "vue";
 import { useElementBounding } from "@vueuse/core";
 import { SpecialFn } from "./special-fn";
 import { DragBox, BarSearch } from "@/ssmlEditor/components";
-import { getConfig } from "@/config";
+import { getConfig } from "@/ssmlEditor/config";
 
 const dragRef = ref();
 const menuRef = ref();

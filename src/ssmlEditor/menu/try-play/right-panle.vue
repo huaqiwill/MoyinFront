@@ -12,14 +12,14 @@ import {
   toRaw,
   inject,
 } from "vue";
-import { formatTime } from "@/utils";
+import { formatTime } from "@/ssmlEditor/utils";
 import { Star, StarFilled } from "@element-plus/icons-vue";
-import { getConfig } from "@/config";
+import { getConfig } from "@/ssmlEditor/config";
 import StyleAvatar from "./style-avatar.vue";
 import { defaultSpeed, defaultPitch } from "./data";
-import { useSSMLStore, useTryPlayStore } from "@/stores";
-import { defaultFilterSpeaker } from "@/model";
-import { emitter } from "@/event-bus";
+import { useSSMLStore, useTryPlayStore } from "@/store";
+import { defaultFilterSpeaker } from "@/ssmlEditor/model";
+import { emitter } from "@/ssmlEditor/event-bus";
 import SimpleTag from "./simple-tag.vue";
 
 const editorKey = inject("editorKey");
@@ -43,8 +43,8 @@ const timeMaxText = computed(() => formatTime(timeMax.value));
 const timeText = computed(() => formatTime(time.value));
 const isStar = computed(() => tryPlayStore.speaker.isStar);
 
-const speedMarks = reactive < Marks > defaultSpeed();
-const pitchMarks = reactive < Marks > defaultPitch();
+const speedMarks = reactive(defaultSpeed());
+const pitchMarks = reactive(defaultPitch());
 
 const flag = ref("");
 const speakerList = ref([]);

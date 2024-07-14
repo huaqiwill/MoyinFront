@@ -43,21 +43,15 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { Edit } from "@element-plus/icons-vue";
 
 import { reactive, ref } from "vue";
-import type { CSSProperties } from "vue";
 
-interface Mark {
-  style: CSSProperties;
-  label: string;
-}
 
-type Marks = Record<number, Mark | string>;
 
 const value = ref([0, 2]);
-const marks = reactive<Marks>({
+const marks = reactive({
   0: "0",
   0.1: "0.1",
   0.2: "0.2",

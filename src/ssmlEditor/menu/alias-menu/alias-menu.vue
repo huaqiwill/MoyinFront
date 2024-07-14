@@ -4,7 +4,7 @@ import { BarButton, BarInput, BarPopover } from "@/ssmlEditor/components";
 import { AliasFn } from "./alias-fn";
 import { getEmitter } from "@/ssmlEditor/core/emitter";
 import { emitter } from "@/ssmlEditor/event-bus";
-import { useEditorStore } from "@/stores";
+import { useEditorStore } from "@/store";
 
 const fn = shallowRef();
 const inputRef = ref();
